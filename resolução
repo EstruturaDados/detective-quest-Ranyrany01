@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/// ---------------------------------------------------------------------
+/// Struct Sala
+/// Representa um cômodo da mansão usando uma árvore binária.
+/// Cada sala possui:
+/// - nome: nome do cômodo
+/// - esquerda: ponteiro para o cômodo à esquerda
+/// - direita: ponteiro para o cômodo à direita
+/// ---------------------------------------------------------------------
+typedef struct Sala {
+    char nome[40];
+    struct Sala *esq;
+    struct Sala *dir;
+} Sala;
+
+/// ---------------------------------------------------------------------
+/// Função criarSala()
+/// Cria uma nova sala usando alocação dinâmica.
+/// Recebe o nome da sala e devolve um ponteiro para a sala criada.
+/// ---------------------------------------------------------------------
+Sala* criarSala(char nome[]) {
+    Sala* nova = (Sala*) malloc(sizeof(Sala));
+    strcpy(nova->nome, nome);
+    nova->esq = NULL;
+    nova->dir = NULL;
+    return nova;
+}
+
+/// ---------------------------------------------------------------------
+/// Função explorarSalas()
+/// Permite que o jogador navegue pela mansão.
+/// O jogador escolhe entre:
+/// - 'e' para ir à esquerda
+/// - 'd' para ir à direita
+/// - 's' para sair
+/// A exploração continua até chega
